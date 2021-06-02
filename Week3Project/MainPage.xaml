@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Week3Project.MainPage">
+
+    <StackLayout >
+        <StackLayout HorizontalOptions="Center">
+        <Entry x:Name="name_text" Placeholder="Student Name"/>
+        <Entry x:Name="id_text" Placeholder="Student ID"/>
+         <Entry x:Name="age_text" Placeholder="Student Age"/>
+            <Button Text="Add New Student" Clicked="Button_Clicked"/>
+          </StackLayout>
+    <ListView x:Name="studentList" HasUnevenRows="True"
+              ItemSelected="studentList_ItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <!--<TextCell Text="{Binding name}"
+                          Detail="{Binding id}">
+
+                    <TextCell.ContextActions>
+
+                    </TextCell.ContextActions>
+                </TextCell>-->
+               
+               
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                    <StackLayout Padding="4">
+                        <Label Text="{Binding name}" TextColor="Red"></Label>
+                        <Label Text="{Binding id}"/>
+                    </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                        <Label Text="{Binding age}" 
+                              ></Label>
+                        <Button Text="Call" Clicked="CallStudentEvent"/>
+                       </StackLayout>
+                    </StackLayout>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Call" Clicked="call_Clicked"
+                                  CommandParameter="{Binding .}"/>
+                        <MenuItem Text="Delete" IsDestructive="True"
+                                  CommandParameter="{Binding .}"
+                                  Clicked="Delete_Clicked" />
+                    </ViewCell.ContextActions>
+                </ViewCell>
+                
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+        <Button Text="Add New Course" Clicked="Button_Clicked_1"></Button>
+    </StackLayout>
+
+</ContentPage>
